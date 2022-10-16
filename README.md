@@ -153,7 +153,77 @@ De la siguiente manera:
         }
    }
    ```
-   **Revise qué valor tiene el parámetro ‘urlPatterns’ de la anotación [@WebServlet](https://docs.oracle.com/javaee/6/tutorial/doc/bnafu.html), pues este indica qué URLs atiende las peticiones el servlet**
+   **Revise qué valor tiene el parámetro ‘urlPatterns’ de la anotación [@WebServlet](https://docs.oracle.com/javaee/6/tutorial/doc/bnafu.html), pues este indica qué URLs atiende las peticiones el servlet** \
+   La clase Sample Servlet extiende de la clase **HttpServer** que se va a encargar de el protocolo http, la cual implementa la interface Serverlet que posee el metodo doGet() y esta clase SampleServlet esta sobreescribiendo el método de doGet que se encarga de manejar la respuesta del metodo GET del protocolo HTTP. La variable urlPatterns es la que va a almacenar la ruta URL para usar el protocolo http
+
+2. **En el pom.xml, modifique la propiedad "packaging" con el valor "war". Agregue la siguiente dependencia:**
+   ```
+   <dependency>
+    <groupId>javax</groupId>
+    <artifactId>javaee-web-api</artifactId>
+    <version>7.0</version>
+    <scope>provided</scope>
+   </dependency>
+   ```
+   **y agregue la seccion build al final del tag project en el archivo pom.xml:**
+   ```
+   <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.3</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.6</version>
+            <executions>
+                <execution>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>copy</goal>
+                    </goals>
+                    <configuration>
+                        <silent>true</silent>
+                        <artifactItems>
+                            <artifactItem>
+                                <groupId>javax</groupId>
+                                <artifactId>javaee-endorsed-api</artifactId>
+                                <version>7.0</version>
+                                <type>jar</type>
+                            </artifactItem>
+                        </artifactItems>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+        <!-- Tomcat embedded plugin. -->
+        <plugin>
+            <groupId>org.apache.tomcat.maven</groupId>
+            <artifactId>tomcat7-maven-plugin</artifactId>
+            <version>2.2</version>
+            <configuration>
+                <port>8080</port>
+                <path>/</path>
+            </configuration>
+        </plugin>
+    </plugins>
+   </build>
+   ```
 
 
 ## Bibliografia
