@@ -107,7 +107,24 @@ caracteres que tiene el contenido HTML que respondió el servidor.** \
 de revisar los conceptos del protocolo HTTP. En este caso, se trata de un módulo de consulta de clientes Web que hace uso de una librería de acceso a datos
 disponible en un repositorio Maven local.**
 
-**Para esto, cree un proyecto maven nuevo usando el arquetipo de aplicación Web estándar maven-archetype-webapp y realice lo siguiente:**
+**Para esto, cree un proyecto maven nuevo usando el arquetipo de aplicación Web estándar** `maven-archetype-webapp` **y realice lo siguiente:**
+
+Se utiliza el siguiente comando
+```
+mvn archetype:generate -Dfilter=maven-archetype-webapp
+```
+Con los parametros:
+
+* Grupo: edu.eci.cvds
+* Id del Artefacto: Servlet
+* Paquete: edu.eci.cvds.servlet
+* archetypeArtifactId: maven-archetype-webapp
+
+De la siguiente manera:
+
+![image](https://user-images.githubusercontent.com/62759668/196061854-5fe79950-0da3-4d1d-a32a-18c334cda908.png)
+![image](https://user-images.githubusercontent.com/62759668/196061875-24736f9b-7e3a-49a3-a937-4047aa1c41fb.png)
+
 
 1. **Revise la clase SampleServlet incluida a continuacion, e identifique qué hace:**
    ```
