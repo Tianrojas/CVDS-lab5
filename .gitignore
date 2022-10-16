@@ -1,0 +1,11 @@
+/target/
+/bin/
+/.settings/
+/nbproject/
+.DS_Store
+.classpath
+.project
+.idea
+*.iml
+
+
