@@ -390,7 +390,7 @@ propiedad urlPatterns, indicando la URL (que usted defina) a la cual se asociar�
 http://www.w3schools.com/html/ ) y un botón. El formulario debe usar como método ‘POST’, y como acción, la ruta relativa del último servlet creado
 (es decir la URL pero excluyendo ‘http://localhost:8080/’).**
 
-19. **Revise este ejemplo de validación de formularios con javascript y agruéguelo a su formulario, de manera que -al momento de hacer ‘submit’- desde el
+19. **Revise este [ejemplo de validación](https://www.w3schools.com/js/js_validation.asp) de formularios con javascript y agruéguelo a su formulario, de manera que -al momento de hacer ‘submit’- desde el
 browser se valide que el valor ingresado es un valor numérico.**
 
 20. **Recompile y ejecute la aplicación. Abra en su navegador en la página del formulario, y rectifique que la página hecha anteriormente sea mostrada.
