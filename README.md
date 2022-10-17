@@ -262,12 +262,102 @@ un parámetro GET (si no sabe como hacerlo, revise la documentación en http://w
     <version>2.3.1</version>
    </dependency>
    ```
-8. En el navegador revise la dirección https://jsonplaceholder.typicode.com/todos/1. Intente cambiando diferentes números al final del path de la url \
+8. **En el navegador revise la dirección https://jsonplaceholder.typicode.com/todos/1. Intente cambiando diferentes números al final del path de la url** \
    ![image](https://user-images.githubusercontent.com/62759668/196075332-9ae95445-1c01-4f46-b455-af31e7a88802.png)
 
+9. **Basado en la respuesta que le da el servicio del punto anterior, cree la clase edu.eci.cvds.servlet.model.Todo con un constructor vacío y los métodos getter y setter para las propiedades de los "To Dos" que se encuentran en la url indicada.**
 
+10. **Utilice la siguiente clase para consumir el servicio que se encuentra en la dirección url del punto anterior:**
+       ```
+        package edu.eci.cvds.servlet;
 
-## Bibliografia
+        import java.io.BufferedReader;
+        import java.io.IOException;
+        import java.io.InputStreamReader;
+        import java.net.MalformedURLException;
+        import java.net.URL;
+        import java.net.URLConnection;
+        import java.util.List;
+
+        import com.google.gson.Gson;
+
+        import edu.eci.cvds.servlet.model.Todo;
+
+        public class Service {
+
+           public static Todo getTodo(int id) throws MalformedURLException, IOException {
+               URL urldemo = new URL("https://jsonplaceholder.typicode.com/todos/" + id);
+               URLConnection yc = urldemo.openConnection();
+               BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+               Gson gson = new Gson();
+               Todo todo = gson.fromJson(in, Todo.class);
+               in.close();
+               return todo;
+           }
+
+           private static String todoToHTMLRow(Todo todo) {
+               return new StringBuilder("<tr>")
+                   .append("<td>")
+                   .append(todo.getUserId())
+                   .append("</td><td>")
+                   .append(todo.getId())
+                   .append("</td><td>")
+                   .append(todo.getTitle())
+                   .append("</td><td>")
+                   .append(todo.getCompleted())
+                   .append("</td>")
+                   .append("</tr>")
+                   .toString();
+           }
+
+           public static String todosToHTMLTable(List<Todo> todoList) {
+               StringBuilder stringBuilder = new StringBuilder("<table>")
+                   .append("<tr>")
+                   .append("<th>User Id</th>")
+                   .append("<th>Id</th>")
+                   .append("<th>Title</th>")
+                   .append("<th>Completed</th>")
+                   .append("</tr>");
+
+               for (Todo todo : todoList) {
+                   stringBuilder.append(todoToHTMLRow(todo));
+               }
+
+               return stringBuilder.append("</table>").toString();
+           }
+        }
+     ```
+11. **Cree una clase que herede de la clase HttpServlet (similar a SampleServlet), y para la misma sobrescriba el método heredado doGet. Incluya la
+anotación @Override para verificar –en tiempo de compilación- que efectivamente se esté sobreescribiendo un método de las superclases.**
+
+12. **Para indicar en qué URL el servlet interceptará las peticiones GET, agregue al método la anotación @WebServlet, y en dicha anotación, defina la
+propiedad urlPatterns, indicando la URL (que usted defina) a la cual se asociará el servlet.**
+
+13. **Teniendo en cuenta las siguientes métodos disponibles en los objetos ServletRequest y ServletResponse recibidos por el método doGet:**
+
+      * **response.setStatus(N); <- Indica con qué código de error N se generará la respuesta. Usar la clase HttpServletResponse para indicar el código de respuesta.**
+      * **request.getParameter(param); <- Consulta el parámetro recibido, asociado al nombre ‘param’.**
+      * **response.getWriter() <- Retorna un objeto PrintWriter a través del cual se le puede enviar la respuesta a quien hizo la petición.**
+      * **response.setContentType(T) <- Asigna el tipo de contenido (MIME type) que se entregará en la respuesta.**
+      
+    **Implemente dicho método de manera que:**
+    
+      * **Asuma que la petición HTTP recibe como parámetro el número de id de una lista de cosas por hacer (todo), y que dicha identificación es un número entero.**
+      * **Con el identificador recibido, consulte el item por hacer de la lista de cosas por hacer, usando la clase "Service" creada en el punto 10.**
+      * **Si el item existe:**
+      
+          * **Responder con el código HTTP que equivale a ‘OK’ (ver referencia anterior), y como contenido de dicha respuesta, el código html correspondiente a una página con una tabla que tenga los detalles del item, usando la clase "Service" creada en el punto 10 par crear la tabla.**
+          
+      * **Si el item no existe:**
+          * **Responder con el código correspondiente a ‘no encontrado’, y con el código de una página html que indique que no existe un item con el identificador dado.**
+          * **Si no se paso parámetro opcional, o si el parámetro no contiene un número entero, devolver el código equivalente a requerimiento inválido.**
+          * **Si se genera la excepcion MalformedURLException devolver el código de error interno en el servidor**
+          * **Para cualquier otra excepcion, devolver el código equivalente a requerimiento inválido.**
+          
+14. **Una vez hecho esto, verifique el funcionamiento de la aplicación, recompile y ejecute la aplicación.**
+15. **Intente hacer diferentes consultas desde un navegador Web para probar las diferentes funcionalidades.**
+
+## Fuentes
 * [Métodos GET VS POST](https://es.stackoverflow.com/questions/34904/cuando-debo-usar-los-m%C3%A9todos-post-y-get)
 
    
