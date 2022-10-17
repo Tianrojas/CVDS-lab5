@@ -364,7 +364,7 @@ propiedad urlPatterns, indicando la URL (que usted defina) a la cual se asociar√
      ![image](https://user-images.githubusercontent.com/62759668/196277584-c3232e63-7093-4a90-97a0-52b03a0faaa3.png)
      
 15. **Intente hacer diferentes consultas desde un navegador Web para probar las diferentes funcionalidades.**
-       ![image](https://user-images.githubusercontent.com/62759668/196277864-9bb9b512-7b71-4b8e-86ec-ac4303c8e224.png)
+       ![image](https://user-images.githubusercontent.com/62759668/196280430-d2f10acd-3f14-4500-90b4-8add915a6eb2.png)
        ![image](https://user-images.githubusercontent.com/62759668/196280069-8d650973-6f77-48d8-b518-ff6f23e99162.png)
 
 ## Fuentes
