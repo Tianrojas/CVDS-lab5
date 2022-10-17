@@ -154,7 +154,9 @@ De la siguiente manera:
    }
    ```
    **Revise qué valor tiene el parámetro ‘urlPatterns’ de la anotación [@WebServlet](https://docs.oracle.com/javaee/6/tutorial/doc/bnafu.html), pues este indica qué URLs atiende las peticiones el servlet** \
-   La clase Sample Servlet extiende de la clase **HttpServer** que se va a encargar de el protocolo http, la cual implementa la interface Serverlet que posee el metodo doGet() y esta clase SampleServlet esta sobreescribiendo el método de doGet que se encarga de manejar la respuesta del metodo GET del protocolo HTTP. La variable urlPatterns es la que va a almacenar la ruta URL para usar el protocolo http
+   La clase Sample Servlet extiende de la clase **HttpServer** que se va a encargar de el protocolo http, la cual implementa la interface Serverlet que posee el metodo doGet() y esta clase SampleServlet esta sobreescribiendo el método de doGet que se encarga de manejar la respuesta del metodo GET del protocolo HTTP. La variable urlPatterns es la que va a almacenar la ruta URL para usar el protocolo http.
+   Mas adelante se necesitara esta clase bien definida por lo que se procede a crearla en la siguiente ubicacion:
+   ![image](https://user-images.githubusercontent.com/62759668/196073988-2e358fa7-11ef-4297-b4ec-3406688f692e.png)
 
 2. **En el pom.xml, modifique la propiedad "packaging" con el valor "war". Agregue la siguiente dependencia:**
    ```
@@ -241,6 +243,29 @@ como host ‘localhost’, como puerto, el configurado en el pom.xml y el path d
 6. **Observe que el Servlet ‘SampleServlet’ acepta peticiones GET, y opcionalmente, lee el parámetro ‘name’. Ingrese la misma URL, pero ahora agregando
 un parámetro GET (si no sabe como hacerlo, revise la documentación en http://www.w3schools.com/tags/ref_httpmethods.asp).**
    
+   Usando la url definida en el Servlet \
+   ![image](https://user-images.githubusercontent.com/62759668/196074279-ccfed1d8-84f7-4b04-a6d8-0668ed8c8e25.png) \
+   Se procede a enviar una peticion GET `http://localhost:8080//helloServlet`, ya sea en consola \
+   ![image](https://user-images.githubusercontent.com/62759668/196074458-6c5f3a05-63b9-4e24-8022-e9b52486d45c.png) \
+   Como en el navegador \
+   ![image](https://user-images.githubusercontent.com/62759668/196074524-53d542d8-0e57-45ee-8b5a-82925604bf68.png) \
+   Para enviar el parametro se sigue con el comando `http://localhost:8080//helloServlet?name=%20Sebastian` \
+   ![image](https://user-images.githubusercontent.com/62759668/196074832-da03924d-60e6-488f-b7ba-a36bf4e338a8.png)
+   
+7. **Busque el artefacto gson en el repositorio de maven y agregue la dependencia**
+
+   ```
+   <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+   <dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.3.1</version>
+   </dependency>
+   ```
+8. En el navegador revise la dirección https://jsonplaceholder.typicode.com/todos/1. Intente cambiando diferentes números al final del path de la url
+   ![image](https://user-images.githubusercontent.com/62759668/196075332-9ae95445-1c01-4f46-b455-af31e7a88802.png)
+
+
 
 ## Bibliografia
 * [Métodos GET VS POST](https://es.stackoverflow.com/questions/34904/cuando-debo-usar-los-m%C3%A9todos-post-y-get)
