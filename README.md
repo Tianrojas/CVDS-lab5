@@ -366,6 +366,37 @@ propiedad urlPatterns, indicando la URL (que usted defina) a la cual se asociar�
 15. **Intente hacer diferentes consultas desde un navegador Web para probar las diferentes funcionalidades.**
        ![image](https://user-images.githubusercontent.com/62759668/196280430-d2f10acd-3f14-4500-90b4-8add915a6eb2.png)
        ![image](https://user-images.githubusercontent.com/62759668/196280069-8d650973-6f77-48d8-b518-ff6f23e99162.png)
+       
+## PARTE III.
+
+16. **En su servlet, sobreescriba el método doPost, y haga la misma implementación del doGet.**
+
+
+17. **Cree el archivo index.html en el directorio src/main/webapp/index.html de la siguiente manera:**
+    ```
+    <!DOCTYPE html>
+      <html>
+          <head>
+              <title>Start Page</title>
+              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+          </head>
+          <body>
+              <h1>Hello World!</h1>
+          </body>
+      </html>
+    ```
+    
+18. **En la página anterior, cree un formulario que tenga un campo para ingresar un número (si no ha manejado html antes, revise
+http://www.w3schools.com/html/ ) y un botón. El formulario debe usar como método ‘POST’, y como acción, la ruta relativa del último servlet creado
+(es decir la URL pero excluyendo ‘http://localhost:8080/’).**
+
+19. **Revise este ejemplo de validación de formularios con javascript y agruéguelo a su formulario, de manera que -al momento de hacer ‘submit’- desde el
+browser se valide que el valor ingresado es un valor numérico.**
+
+20. **Recompile y ejecute la aplicación. Abra en su navegador en la página del formulario, y rectifique que la página hecha anteriormente sea mostrada.
+Ingrese los datos y verifique los resultados. Cambie el formulario para que ahora en lugar de POST, use el método GET . Qué diferencia observa?**
+
+21. **¿Qué se está viendo? Revise cómo están implementados los métodos de la clase Service.java para entender el funcionamiento interno.**
 
 ## Fuentes
 * [Métodos GET VS POST](https://es.stackoverflow.com/questions/34904/cuando-debo-usar-los-m%C3%A9todos-post-y-get)
