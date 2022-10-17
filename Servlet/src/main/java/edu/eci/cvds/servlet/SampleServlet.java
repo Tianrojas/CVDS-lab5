@@ -9,11 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet(
-        urlPatterns = "/helloServlet"
-)
-public class SampleServlet extends HttpServlet{
+
+@WebServlet(urlPatterns = "/helloServlet")
+public class SampleServlet extends HttpServlet {
     static final long serialVersionUID = 35L;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Writer responseWriter = resp.getWriter();
