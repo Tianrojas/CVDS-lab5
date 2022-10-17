@@ -327,6 +327,9 @@ un parámetro GET (si no sabe como hacerlo, revise la documentación en http://w
            }
         }
      ```
+     
+     ![image](https://user-images.githubusercontent.com/62759668/196277098-1dd2a221-cb61-4778-aed0-112f3e6ccbfe.png)
+
 11. **Cree una clase que herede de la clase HttpServlet (similar a SampleServlet), y para la misma sobrescriba el método heredado doGet. Incluya la
 anotación @Override para verificar –en tiempo de compilación- que efectivamente se esté sobreescribiendo un método de las superclases.**
 
@@ -354,8 +357,15 @@ propiedad urlPatterns, indicando la URL (que usted defina) a la cual se asociar�
           * **Si se genera la excepcion MalformedURLException devolver el código de error interno en el servidor**
           * **Para cualquier otra excepcion, devolver el código equivalente a requerimiento inválido.**
           
+      ![image](https://user-images.githubusercontent.com/62759668/196277398-da4a4b73-956c-44f9-a9f2-4eba2c0ad8d4.png)
+          
 14. **Una vez hecho esto, verifique el funcionamiento de la aplicación, recompile y ejecute la aplicación.**
+     
+     ![image](https://user-images.githubusercontent.com/62759668/196277584-c3232e63-7093-4a90-97a0-52b03a0faaa3.png)
+     
 15. **Intente hacer diferentes consultas desde un navegador Web para probar las diferentes funcionalidades.**
+       ![image](https://user-images.githubusercontent.com/62759668/196277864-9bb9b512-7b71-4b8e-86ec-ac4303c8e224.png)
+       ![image](https://user-images.githubusercontent.com/62759668/196280069-8d650973-6f77-48d8-b518-ff6f23e99162.png)
 
 ## Fuentes
 * [Métodos GET VS POST](https://es.stackoverflow.com/questions/34904/cuando-debo-usar-los-m%C3%A9todos-post-y-get)
