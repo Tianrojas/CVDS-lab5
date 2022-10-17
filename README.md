@@ -262,7 +262,7 @@ un parámetro GET (si no sabe como hacerlo, revise la documentación en http://w
     <version>2.3.1</version>
    </dependency>
    ```
-8. En el navegador revise la dirección https://jsonplaceholder.typicode.com/todos/1. Intente cambiando diferentes números al final del path de la url
+8. En el navegador revise la dirección https://jsonplaceholder.typicode.com/todos/1. Intente cambiando diferentes números al final del path de la url \
    ![image](https://user-images.githubusercontent.com/62759668/196075332-9ae95445-1c01-4f46-b455-af31e7a88802.png)
 
 
