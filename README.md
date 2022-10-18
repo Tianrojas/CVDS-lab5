@@ -370,7 +370,8 @@ propiedad urlPatterns, indicando la URL (que usted defina) a la cual se asociar�
 ## PARTE III.
 
 16. **En su servlet, sobreescriba el método doPost, y haga la misma implementación del doGet.**
-
+    
+    ![image](https://user-images.githubusercontent.com/62759668/196307099-90933ac4-ffda-4c6d-888f-8847ef7167b4.png)
 
 17. **Cree el archivo index.html en el directorio src/main/webapp/index.html de la siguiente manera:**
     ```
@@ -386,12 +387,17 @@ propiedad urlPatterns, indicando la URL (que usted defina) a la cual se asociar�
       </html>
     ```
     
+    ![image](https://user-images.githubusercontent.com/62759668/196307231-4992b38e-6bb9-4dd1-80a0-e8617f27c867.png)
+    
 18. **En la página anterior, cree un formulario que tenga un campo para ingresar un número (si no ha manejado html antes, revise
 http://www.w3schools.com/html/ ) y un botón. El formulario debe usar como método ‘POST’, y como acción, la ruta relativa del último servlet creado
 (es decir la URL pero excluyendo ‘http://localhost:8080/’).**
+    
+    ![image](https://user-images.githubusercontent.com/62759668/196307268-45a20058-539e-4a6f-8b3d-e8ec47a5e962.png)
 
-19. **Revise este [ejemplo de validación](https://www.w3schools.com/js/js_validation.asp) de formularios con javascript y agruéguelo a su formulario, de manera que -al momento de hacer ‘submit’- desde el
-browser se valide que el valor ingresado es un valor numérico.**
+19. **Revise este [ejemplo de validación](https://www.w3schools.com/js/js_validation.asp) de formularios con javascript y agruéguelo a su formulario, de manera que al momento de hacer ‘submit’- desde el browser se valide que el valor ingresado es un valor numérico.**
+
+    
 
 20. **Recompile y ejecute la aplicación. Abra en su navegador en la página del formulario, y rectifique que la página hecha anteriormente sea mostrada.
 Ingrese los datos y verifique los resultados. Cambie el formulario para que ahora en lugar de POST, use el método GET . Qué diferencia observa?**
