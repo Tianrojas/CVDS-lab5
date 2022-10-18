@@ -5,9 +5,18 @@
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     </head>
     <body>
-        <form action="http://localhost:8080/Todo" method="post" name="Form">
+        <form action="http://localhost:8080/Todo" method="post" onsubmit="return validateForm()" name="Form">
             Name: <input name="id" type="text">
             <input type="submit" value="Submit">
         </form>
+        <script>
+            function validateForm() {
+                var x = document.forms["Form"]["id"].value;
+                if (isNaN(Number(x))) {
+                    alert("the input must be a number");
+                    return false;
+                }
+            }
+        </script>
     </body>
 </html>
