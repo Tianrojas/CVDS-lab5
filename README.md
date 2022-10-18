@@ -34,7 +34,7 @@
      
    * **¿Qué otros códigos de error existen?, ¿En qué caso se manejarán?**
      
-     Existen una gama de errores los cuales pueden verse desde una perspectiva mas amplia con la siguiente imagen:
+     Existen una gama de errores los cuales pueden verse desde una perspectiva mas amplia con la siguiente imagen: \
      ![image](https://user-images.githubusercontent.com/62759668/196054928-5ec8235d-c4e7-4789-98af-616f64cdb216.png)
 
 
@@ -267,6 +267,8 @@ un parámetro GET (si no sabe como hacerlo, revise la documentación en http://w
 
 9. **Basado en la respuesta que le da el servicio del punto anterior, cree la clase edu.eci.cvds.servlet.model.Todo con un constructor vacío y los métodos getter y setter para las propiedades de los "To Dos" que se encuentran en la url indicada.**
 
+   ![image](https://user-images.githubusercontent.com/62759668/196312455-b2c5887d-ef58-4739-ac73-bd4e256014d5.png)
+
 10. **Utilice la siguiente clase para consumir el servicio que se encuentra en la dirección url del punto anterior:**
        ```
         package edu.eci.cvds.servlet;
@@ -333,8 +335,11 @@ un parámetro GET (si no sabe como hacerlo, revise la documentación en http://w
 11. **Cree una clase que herede de la clase HttpServlet (similar a SampleServlet), y para la misma sobrescriba el método heredado doGet. Incluya la
 anotación @Override para verificar –en tiempo de compilación- que efectivamente se esté sobreescribiendo un método de las superclases.**
 
+
 12. **Para indicar en qué URL el servlet interceptará las peticiones GET, agregue al método la anotación @WebServlet, y en dicha anotación, defina la
 propiedad urlPatterns, indicando la URL (que usted defina) a la cual se asociará el servlet.**
+
+    ![image](https://user-images.githubusercontent.com/62759668/196312804-cca770ed-1361-43ec-ab30-ba9980db10fc.png)
 
 13. **Teniendo en cuenta las siguientes métodos disponibles en los objetos ServletRequest y ServletResponse recibidos por el método doGet:**
 
