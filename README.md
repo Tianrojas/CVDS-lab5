@@ -411,7 +411,59 @@ Ingrese los datos y verifique los resultados. Cambie el formulario para que ahor
     ![image](https://user-images.githubusercontent.com/62759668/196311850-2c800164-fd80-4ae5-a6fc-01a4a746566c.png)
 
 21. **¿Qué se está viendo? Revise cómo están implementados los métodos de la clase Service.java para entender el funcionamiento interno.**
-    
+
+    Se ve la interface generada por HTML la cual re dirige segun el input a un ToDo item y lanza una advertencia en dado caso que el input no cumpla las especificaciones dadas
+
+## PARTE IV. - FRAMEWORKS WEB MVC – JAVA SERVER FACES /PRIME FACES
+
+**En este ejercicio, usted va a desarrollar una aplicación Web basada en el marco JSF, y en una de sus implementaciones más usadas: [PrimeFaces](https://www.primefaces.org/). Se trata de un juego en línea para adivinar un número, en el que el ganador, si atina en la primera oportunidad, recibe
+$100.000. Luego, por cada intento fallido, el premiose reduce en $10.000.**
+
+1. **Al proyecto Maven, debe agregarle las dependencias mas recientes de `javax.javaee-api`,`com.sun.faces.jsf-api`,`com.sun.faces.jsf-impl`,`javax.servlet.jstl` y Primefaces (en el archivo pom.xml).**
+
+2. **Para que confi gure automáticamente el descriptor de despliegue de la aplicación (archivo web.xml), de manera que el framework JSF se active al iniciode la aplicación, en el archivo web.xml agregue la siguiente configuración:**
+   
+   ```
+    <servlet>
+      <servlet-name>Faces Servlet</servlet-name>
+      <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>Faces Servlet</servlet-name>
+      <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+       <welcome-file>faces/index.jsp</welcome-file>
+    </welcome-file-list>
+   ```
+3. **Revise cada una de las confi guraciones agregadas anteriormente para saber qué hacen y por qué se necesitan. Elimine las que no se necesiten.**
+4. **Ahora, va a crear un Backing-Bean de sesión, el cual, para cada usuario, mantendrá de lado del servidor las siguientes propiedades:**
+   * **El número que actualmente debe adivinar (debe ser un número aleatorio).**
+   * **El número de intentos realizados.**
+   * **El premio acumulado hasta el momento.**
+   * **El estado del juego, que sería una cadena de texto que indica si ya ganó o no, y si ganó de cuanto es el premio.**
+   
+   **Para hacer esto, cree una clase que tenga:**
+   * **el constructor por defecto (sin parámetros)**
+   * **los métodos get/set necesarios dependiendo si las propiedades son de escritura o lectura**
+      * **coloque las anotaciones: `@ManagedBean`, incluyendo el nombre: @ManagedBean(name = "guessBean").**
+      * **@ApplicationScoped.**
+   
+   **A la implementación de esta clase, agregue los siguientes métodos:**
+   * **guess: Debe recibir un intento de adivinanza y realizar la lógica para saber si se adivinó, de tal forma que se ajuste el valor del premio y/o actualiceel estado del juego.**
+   * **restart: Debe volver a iniciar el juego (inicializar de nuevo el número a adivinar, y restaurar el premio a su valor original).**
+   
+5. **Cree una página XHTML, de nombre `guess.xhtml` (debe quedar en la ruta src/main/webapp). Revise en la [página 13 del manual de PrimeFaces](https://www.primefaces.org/docs/guide/primefaces_user_guide_5_2.pdf), quéespacios de nombres XML requiere una página de PrimeFaces y cuál es la estructura básica de la misma.**
+
+6. **Con base en lo anterior, agregue un formulario con identificador guess_form con el siguiente contenido básico:**
+   ```
+   <h:body>
+    <h:form id="guess_form">
+
+    </h:form>
+   </h:body>
+   ```
 
 ## Fuentes
 * [Métodos GET VS POST](https://es.stackoverflow.com/questions/34904/cuando-debo-usar-los-m%C3%A9todos-post-y-get)
