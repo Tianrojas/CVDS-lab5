@@ -40,6 +40,7 @@
                     <h:outputLabel value="Score:" style="font-weight: bold;"/> <h:outputLabel value="#{guessBean.getScore()}" />
                     <h:commandButton value="Restart" update="guess_form" actionListener="#{guessBean.restart()}"/>
                     <h:commandButton value="Guess"  update="guess_form" actionListener="#{guessBean.guess(input.value)}"/>
+                    <h:outputLabel value="Numbers played:" style="font-weight: bold;"/> <h:outputLabel value="#{guessBean.getPlayed()}" />
                 </h:panelGrid>
             </h:form>
         </center>

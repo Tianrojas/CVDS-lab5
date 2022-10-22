@@ -4,6 +4,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.SessionScoped;
 
+import java.util.ArrayList;
+
 @ManagedBean(name = "guessBean")
 @SessionScoped
 
@@ -12,6 +14,9 @@ public class BackingBean {
     int score = 100000;
     String status = "Playing";
     int tries = 0;
+
+    ArrayList<Integer> played = new ArrayList<Integer>();
+
     public BackingBean(){
 
     }
@@ -23,6 +28,7 @@ public class BackingBean {
     public String getStatus(){
         return status;
     }
+
     public int getScore(){
         return score;
     }
@@ -30,6 +36,8 @@ public class BackingBean {
     public int getTries() {
         return tries;
     }
+
+    public ArrayList<Integer> getPlayed(){return played;}
 
     public void setStatus(String status){
         this.status = status;
@@ -48,6 +56,7 @@ public class BackingBean {
         if (number == randomNumber && (getStatus() !="Lose")){
             setStatus("Win");
         }else if ((getScore() - 10000) > 0){
+            played.add(number);
             setScore(getScore() - 10000);
             setStatus("Playing");
         }else{
@@ -57,6 +66,7 @@ public class BackingBean {
     }
 
     public void restart(){
+        played.clear();
         tries = 0;
         setRandomNumber((int) (Math.random()*10)+1);
         setScore(100000);
