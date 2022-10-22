@@ -566,8 +566,8 @@ Actualice la página. Los cambios de estilos realizados desaparecen, pues se rea
 servidor sigue siendo la misma, ya que el contenido de los archivos allí almacenados no se ha modificado.**
         ![image](https://user-images.githubusercontent.com/62759668/197358180-8150daa9-1c03-4cf4-9b55-027105f9b159.png)
 
-     * **Revise qué otros cambios se pueden realizar y qué otra información se puede obtener de las herramientas de desarrollador.**
-       Se puede modificar el HTML, realizar JQueries, aplicar funciones, definir variables, etc...
+      * **Revise qué otros cambios se pueden realizar y qué otra información se puede obtener de las herramientas de desarrollador.** \
+       Se puede modificar el HTML, realizar JQueries, aplicar funciones, definir variables, tiene cosola para codigo Javascript, para el diseno, etc...
        ![image](https://user-images.githubusercontent.com/62759668/197358694-9b9617c4-7f22-4386-a6d1-c2e336be6ac3.png)
 
 11. Para facilitar los intentos del usuario, se agregará una lista de los últimos intentos fallidos realizados:
