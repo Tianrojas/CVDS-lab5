@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 
 public class BackingBean {
     int randomNumber = (int) (Math.random()*10)+1;
-    int score = 10000;
+    int score = 100000;
     String status = "Playing";
     int tries = 0;
     public BackingBean(){
@@ -46,7 +46,7 @@ public class BackingBean {
         tries ++;
         if (number == randomNumber && (getStatus() !="Lose")){
             setStatus("Win");
-        }else if (getScore() - 10000 > 0){
+        }else if ((getScore() - 10000) > 0){
             setScore(getScore() - 10000);
             setStatus("Playing");
         }else{
