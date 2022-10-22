@@ -1,10 +1,11 @@
 package edu.eci.cvds.servlet.JCF;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name = "guessBean")
-@ApplicationScoped
+@SessionScoped
 
 public class BackingBean {
     int randomNumber = (int) (Math.random()*10)+1;
