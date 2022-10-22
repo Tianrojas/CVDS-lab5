@@ -437,12 +437,14 @@ $100.000. Luego, por cada intento fallido, el premiose reduce en $10.000.**
        <welcome-file>faces/index.jsp</welcome-file>
     </welcome-file-list>
    ```
-3. **Revise cada una de las confi guraciones agregadas anteriormente para saber qué hacen y por qué se necesitan. Elimine las que no se necesiten.**
+3. **Revise cada una de las configuraciones agregadas anteriormente para saber qué hacen y por qué se necesitan. Elimine las que no se necesiten.**
 4. **Ahora, va a crear un Backing-Bean de sesión, el cual, para cada usuario, mantendrá de lado del servidor las siguientes propiedades:**
    * **El número que actualmente debe adivinar (debe ser un número aleatorio).**
    * **El número de intentos realizados.**
    * **El premio acumulado hasta el momento.**
    * **El estado del juego, que sería una cadena de texto que indica si ya ganó o no, y si ganó de cuanto es el premio.**
+   
+   ![image](https://user-images.githubusercontent.com/62759668/197356418-af9b9347-8a7a-40a7-b56f-762faef529ec.png)
    
    **Para hacer esto, cree una clase que tenga:**
    * **el constructor por defecto (sin parámetros)**
@@ -450,11 +452,17 @@ $100.000. Luego, por cada intento fallido, el premiose reduce en $10.000.**
       * **coloque las anotaciones: `@ManagedBean`, incluyendo el nombre: @ManagedBean(name = "guessBean").**
       * **@ApplicationScoped.**
    
+   ![image](https://user-images.githubusercontent.com/62759668/197356446-4f4fbe87-d9c2-4a25-bc2f-4d2571f94dc4.png)
+   
    **A la implementación de esta clase, agregue los siguientes métodos:**
    * **guess: Debe recibir un intento de adivinanza y realizar la lógica para saber si se adivinó, de tal forma que se ajuste el valor del premio y/o actualiceel estado del juego.**
    * **restart: Debe volver a iniciar el juego (inicializar de nuevo el número a adivinar, y restaurar el premio a su valor original).**
+
+   ![image](https://user-images.githubusercontent.com/62759668/197356465-ee747991-64e5-4220-bb9b-8f932409e8be.png)
    
-5. **Cree una página XHTML, de nombre `guess.xhtml` (debe quedar en la ruta src/main/webapp). Revise en la [página 13 del manual de PrimeFaces](https://www.primefaces.org/docs/guide/primefaces_user_guide_5_2.pdf), quéespacios de nombres XML requiere una página de PrimeFaces y cuál es la estructura básica de la misma.**
+5. **Cree una página XHTML, de nombre `guess.xhtml` (debe quedar en la ruta src/main/webapp). Revise en la [página 13 del manual de PrimeFaces](https://www.primefaces.org/docs/guide/primefaces_user_guide_5_2.pdf), qué espacios de nombres XML requiere una página de PrimeFaces y cuál es la estructura básica de la misma.**
+
+   ![image](https://user-images.githubusercontent.com/62759668/197356532-f3cf93ef-e0a1-42f7-895d-939dbe3d193e.png)
 
 6. **Con base en lo anterior, agregue un formulario con identificador guess_form con el siguiente contenido básico:**
    ```
@@ -464,6 +472,94 @@ $100.000. Luego, por cada intento fallido, el premiose reduce en $10.000.**
     </h:form>
    </h:body>
    ```
+   
+7. **Al formulario, agregue:**
+   * **Un elemento de tipo <p:outputLabel> para el número que se debe adivinar, sin embargo, este elemento se debe ocultar. Para ocultarlo, se
+puede agregar el estilo display: none; al elemento. Una forma de hacerlo es por medio de la propiedad style.
+      En una aplicacion real, no se debería tener este elemento, solo se crea con el fin de simplificar una prueba futura.**
+      
+      ![image](https://user-images.githubusercontent.com/62759668/197356683-4448a220-b515-446f-a9be-79588d5ce42a.png)
+
+   * **Un elemento <p:inputText> para que el usuario ingrese su número.**
+     
+     ![image](https://user-images.githubusercontent.com/62759668/197356708-c1965554-a20e-4668-b100-795ea1057482.png)
+
+   * **Un elemento de tipo <p:outputLabel> para mostrar el número de intentos realizados.**
+      
+     ![image](https://user-images.githubusercontent.com/62759668/197356732-a44a8b18-ffbc-454c-83c7-3eb8f92f9b82.png)
+
+   * **Un elemento de tipo <p:outputLabel> para mostrar el estado del juego.**
+     
+     ![image](https://user-images.githubusercontent.com/62759668/197356751-00bb7331-b8d4-497d-8a64-8cfd4cf5fbb6.png)
+
+   * **Un elemento de tipo <p:outputLabel> para mostrar en cuanto va el premio.**
+     
+     ![image](https://user-images.githubusercontent.com/62759668/197356798-7964be62-25cd-4067-8257-a5f336e477c9.png)
+
+   **Y asocie dichos elementos al BackingBean de sesión a través de su propiedad value, y usando como referencia el nombre asignado:
+value="#{guessBean.nombrePropiedad}"**
+
+8. **Al formulario, agregue dos botones de tipo <p:commandButton>, uno para enviar el número ingresado y ver si se atinó, y otro para reiniciar el juego.**
+   
+   * **El botón de envío de adivinanza debe tener asociado a su propiedad update el nombre del formulario en el que se agregaron los campos antes
+descritos, de manera que al hacer clic, se ejecute un ciclo de JSF y se refresque la vista.**
+
+   * **Debe tener también una propiedad actionListener con la cual se le indicará que, al hacer clic, se ejecutará el método guess, creado en el
+backing-bean de sesión:**
+     
+     `<p:commandButton update="guess_form" actionListener="#{guessBean.guess}">...`
+     
+     ![image](https://user-images.githubusercontent.com/62759668/197356870-e1fc8d58-33c1-46c3-a741-63c540502058.png)
+     
+
+   * **El botón de reiniciar juego tendrá las mismas propiedades de update y actionListener del otro con el valor correspondiente:**
+     
+     `<p:commandButton update="…" actionListener="…">`
+     
+     ![image](https://user-images.githubusercontent.com/62759668/197356966-40a2de3a-e899-43ae-b4bd-c11bcb8ba960.png)
+
+9. **Para verificar el funcionamiento de la aplicación, agregue el plugin tomcat-runner dentro de los plugins de la fase de construcción (build). Tenga en
+cuenta que en la configuración del plugin se indica bajo que ruta quedará la aplicación:**
+   ```
+   mvn package
+   mvn tomcat7:run
+   ```
+   **Si no hay errores, la aplicación debería quedar accesible en la URL: `http://localhost:8080/faces/guess.xhtml`**
+   
+   ![image](https://user-images.githubusercontent.com/62759668/197357025-cca1ef99-4cd6-47eb-a55d-77fd0df4cd5e.png)
+
+10. **Si todo funcionó correctamente, realice las siguientes pruebas:**
+    
+    * **Abra la aplicación en un explorador. Realice algunas pruebas con el juego e intente adivinar el número.**
+      ![image](https://user-images.githubusercontent.com/62759668/197357104-63578504-719c-42d5-b9cf-048da09dbe46.png)
+
+    * **Abra la aplicación en dos computadores diferentes. Si no dispone de uno, hágalo en dos navegadores diferentes (por ejemplo Chrome y Firefox;
+incluso se puede en un único navegador usando una ventana normal y una ventana de incógnito / privada). Haga cinco intentos en uno, y luego
+un intento en el otro. ¿Qué valor tiene cada uno?**
+      ![image](https://user-images.githubusercontent.com/62759668/197357161-a4a2ecb2-6d31-47c1-a765-894c0e7dfd4d.png)
+      Como vemos tiene procesos diferentes y valores independientes aunque con la misma logica
+
+    * **Aborte el proceso de Tomcat-runner haciendo Ctrl+C en la consola, y modifique el código del backing-bean de manera que use la anotación
+@SessionScoped en lugar de @ApplicationScoped. Reinicie la aplicación y repita el ejercicio anterior.**
+      
+      
+¿Coinciden los valores del premio?.
+Dado la anterior, ¿Cuál es la diferencia entre los backing-beans de sesión y los de aplicación?
+Data retention summary
+Get the mobile app
+d. Por medio de las herramientas de desarrollador del explorador (Usando la tecla "F12" en la mayoría de exploradores):
+Ubique el código HTML generado por el servidor.
+Busque el elemento oculto, que contiene el número generado aleatoriamente.
+En la sección de estilos, deshabilite el estilo que oculta el elemento para que sea visible.
+Observe el cambio en la página, cada vez que se realiza un cambio en el estilo.
+Revise qué otros estilos se pueden agregar a los diferentes elementos y qué efecto tienen en la visualización de la página.
+Actualice la página. Los cambios de estilos realizados desaparecen, pues se realizaron únicamente en la visualización, la respuesta del
+servidor sigue siendo la misma, ya que el contenido de los archivos allí almacenados no se ha modificado.
+Revise qué otros cambios se pueden realizar y qué otra información se puede obtener de las herramientas de desarrollador.
+11. Para facilitar los intentos del usuario, se agregará una lista de los últimos intentos fallidos realizados:
+   
+   ![image](https://user-images.githubusercontent.com/62759668/197356605-07629b44-c973-436f-9841-2bcb90db0ad3.png)
+
 
 ## Fuentes
 * [Métodos GET VS POST](https://es.stackoverflow.com/questions/34904/cuando-debo-usar-los-m%C3%A9todos-post-y-get)
