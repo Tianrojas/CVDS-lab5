@@ -536,30 +536,41 @@ cuenta que en la configuración del plugin se indica bajo que ruta quedará la a
     * **Abra la aplicación en dos computadores diferentes. Si no dispone de uno, hágalo en dos navegadores diferentes (por ejemplo Chrome y Firefox;
 incluso se puede en un único navegador usando una ventana normal y una ventana de incógnito / privada). Haga cinco intentos en uno, y luego
 un intento en el otro. ¿Qué valor tiene cada uno?**
-      ![image](https://user-images.githubusercontent.com/62759668/197357161-a4a2ecb2-6d31-47c1-a765-894c0e7dfd4d.png)
+      ![image](https://user-images.githubusercontent.com/62759668/197357161-a4a2ecb2-6d31-47c1-a765-894c0e7dfd4d.png) \
       Como vemos tiene procesos diferentes y valores independientes aunque con la misma logica
 
     * **Aborte el proceso de Tomcat-runner haciendo Ctrl+C en la consola, y modifique el código del backing-bean de manera que use la anotación
 @SessionScoped en lugar de @ApplicationScoped. Reinicie la aplicación y repita el ejercicio anterior.**
       
+      ![image](https://user-images.githubusercontent.com/62759668/197357538-7a08c076-e8b8-4f73-ae59-66806a97f6a5.png)
       
-¿Coinciden los valores del premio?.
-Dado la anterior, ¿Cuál es la diferencia entre los backing-beans de sesión y los de aplicación?
-Data retention summary
-Get the mobile app
-d. Por medio de las herramientas de desarrollador del explorador (Usando la tecla "F12" en la mayoría de exploradores):
-Ubique el código HTML generado por el servidor.
-Busque el elemento oculto, que contiene el número generado aleatoriamente.
-En la sección de estilos, deshabilite el estilo que oculta el elemento para que sea visible.
-Observe el cambio en la página, cada vez que se realiza un cambio en el estilo.
-Revise qué otros estilos se pueden agregar a los diferentes elementos y qué efecto tienen en la visualización de la página.
-Actualice la página. Los cambios de estilos realizados desaparecen, pues se realizaron únicamente en la visualización, la respuesta del
-servidor sigue siendo la misma, ya que el contenido de los archivos allí almacenados no se ha modificado.
-Revise qué otros cambios se pueden realizar y qué otra información se puede obtener de las herramientas de desarrollador.
-11. Para facilitar los intentos del usuario, se agregará una lista de los últimos intentos fallidos realizados:
-   
-   ![image](https://user-images.githubusercontent.com/62759668/197356605-07629b44-c973-436f-9841-2bcb90db0ad3.png)
+     * **¿Coinciden los valores del premio?.** No
+     * **Dado la anterior, ¿Cuál es la diferencia entre los backing-beans de sesión y los de aplicación?** Vemos que con los cambios ahora se permite tener dos seciones abiertas en el mismo navegador, sin necesidad de estar en incognito, y de igual manera las variables manejan valores independientes\
+      ![image](https://user-images.githubusercontent.com/62759668/197357702-5d595292-974b-42c8-9384-790119d2e8b4.png)
 
+   *  **Por medio de las herramientas de desarrollador del explorador (Usando la tecla "F12" en la mayoría de exploradores):**
+      * **Ubique el código HTML generado por el servidor.**
+        ![image](https://user-images.githubusercontent.com/62759668/197357959-d89abbc2-fe9d-442e-9893-53f9b8b6a807.png)
+
+      * **Busque el elemento oculto, que contiene el número generado aleatoriamente.**
+        ![image](https://user-images.githubusercontent.com/62759668/197357980-d1a8565f-9960-4a63-b01e-269a82475211.png)
+
+      * **En la sección de estilos, deshabilite el estilo que oculta el elemento para que sea visible.**
+        ![image](https://user-images.githubusercontent.com/62759668/197358005-1864e29a-5d79-46ab-b1d2-ec817e35af1e.png)
+
+      * **Observe el cambio en la página, cada vez que se realiza un cambio en el estilo.**
+        ![image](https://user-images.githubusercontent.com/62759668/197358033-e26f9d04-faff-4bc6-9d50-7c7cf1c387b8.png)
+
+      * **Revise qué otros estilos se pueden agregar a los diferentes elementos y qué efecto tienen en la visualización de la página.
+Actualice la página. Los cambios de estilos realizados desaparecen, pues se realizaron únicamente en la visualización, la respuesta del
+servidor sigue siendo la misma, ya que el contenido de los archivos allí almacenados no se ha modificado.**
+        ![image](https://user-images.githubusercontent.com/62759668/197358180-8150daa9-1c03-4cf4-9b55-027105f9b159.png)
+
+     * **Revise qué otros cambios se pueden realizar y qué otra información se puede obtener de las herramientas de desarrollador.**
+       Se puede modificar el HTML, realizar JQueries, aplicar funciones, definir variables, etc...
+       ![image](https://user-images.githubusercontent.com/62759668/197358694-9b9617c4-7f22-4386-a6d1-c2e336be6ac3.png)
+
+11. Para facilitar los intentos del usuario, se agregará una lista de los últimos intentos fallidos realizados:
 
 ## Fuentes
 * [Métodos GET VS POST](https://es.stackoverflow.com/questions/34904/cuando-debo-usar-los-m%C3%A9todos-post-y-get)
