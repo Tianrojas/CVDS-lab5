@@ -427,7 +427,7 @@ $100.000. Luego, por cada intento fallido, el premiose reduce en $10.000.**
     <servlet>
       <servlet-name>Faces Servlet</servlet-name>
       <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
+      <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
       <servlet-name>Faces Servlet</servlet-name>
@@ -438,6 +438,19 @@ $100.000. Luego, por cada intento fallido, el premiose reduce en $10.000.**
     </welcome-file-list>
    ```
 3. **Revise cada una de las configuraciones agregadas anteriormente para saber qué hacen y por qué se necesitan. Elimine las que no se necesiten.**
+
+   * **servlet:** Sirve para configurar el servidor que va atender las peticiones de la pagina web
+   * **servlet-name (servlet):** Nombre del servidor.
+   * **load-on-startup:** El elemento de carga al inicio de la aplicación web carga el servlet en el momento de la implementación o el inicio del servidor si el valor es positivo. Si pasa el valor negativo, el servlet se cargará en el momento de la solicitud, en la primera solicitud.
+  
+   * **servlet-mapping:** Este tag sirve para realizar la especificacion de cual html se atenderan las peticiones.
+   * **servlet-name (servlet-mapping):** Nombre del servido del cual queremos realizar la configuracion.
+   * **url-pattern:** Un patron URL del web site a atender.
+
+   * **welcome-file-list:** Se utiliza para definir una lista de archivos de bienvenida. Si la entrada de la lista de archivos de bienvenida no existe en el archivo web.xml, la prioridad va al archivo index.html, luego a index.htm y, por último, al archivo index.jsp.
+   * **welcome-file:** Se utiliza para definir un archivo de bienvenida. 
+   
+   
 4. **Ahora, va a crear un Backing-Bean de sesión, el cual, para cada usuario, mantendrá de lado del servidor las siguientes propiedades:**
    * **El número que actualmente debe adivinar (debe ser un número aleatorio).**
    * **El número de intentos realizados.**
@@ -570,7 +583,10 @@ servidor sigue siendo la misma, ya que el contenido de los archivos allí almace
        Se puede modificar el HTML, realizar JQueries, aplicar funciones, definir variables, tiene cosola para codigo Javascript, para el diseno, etc...
        ![image](https://user-images.githubusercontent.com/62759668/197358694-9b9617c4-7f22-4386-a6d1-c2e336be6ac3.png)
 
-11. Para facilitar los intentos del usuario, se agregará una lista de los últimos intentos fallidos realizados:
+11. **Para facilitar los intentos del usuario, se agregará una lista de los últimos intentos fallidos realizados:**
+    
+    ![image](https://user-images.githubusercontent.com/62759668/197359422-773f0eaa-9fb9-4187-81c9-7c2c38870768.png)
+
 
 ## Fuentes
 * [Métodos GET VS POST](https://es.stackoverflow.com/questions/34904/cuando-debo-usar-los-m%C3%A9todos-post-y-get)
